@@ -43,4 +43,4 @@ A project to learn how to practice Clean Architecture using Flutter.
 
 ## Playground app
 - flutter_carousel_widget
-
+- rxDart
