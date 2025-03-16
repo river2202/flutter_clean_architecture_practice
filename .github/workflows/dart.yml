@@ -1,0 +1,41 @@
+name: Flutter widget book
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: ./widgetbook
+
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          flutter-version-file: ./pubspec.yaml
+          cache: true
+          cache-key: "flutter-:os:-:channel:-:version:-:arch:-:hash:"
+          cache-path: "${{ runner.tool_cache }}/flutter/:channel:-:version:-:arch:"
+          pub-cache-key: "flutter-pub:os:-:channel:-:version:-:arch:-:hash:"
+          pub-cache-path: "${{ runner.tool_cache }}/flutter/:channel:-:version:-:arch:"
+
+      - name: Install dependencies
+        run: flutter pub get
+        
+      - name: Widget book
+        run: dart pub global activate widgetbook_cli
+
+      - name: Build
+        run: flutter build web
+        
+      - name: Upload to widget book cloud
+        run: widgetbook cloud build push --api-key $WIDGETBOOK_API_KEY
