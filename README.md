@@ -18,6 +18,14 @@ A project to learn how to practice Clean Architecture using Flutter.
         - Data source
         - 3rd party sdk facade
 
+- Some other very improtant practice
+    - rxDart
+    - Coordinator Pattern
+        The Coordinator pattern was first introduced to the iOS community by Soroush Khanlou (@khanlou) in [his blog](http://khanlou.com/2015/10/coordinators-redux/) and during his [presentation at the NSSpain conference](https://vimeo.com/144116310).
+    - design system
+    - testing
+        - [Robot pattern](https://jakewharton.com/testing-robots/)
+
 
 ## Implementation
 - Riverpod
@@ -32,3 +40,7 @@ A project to learn how to practice Clean Architecture using Flutter.
 - Data source implementation
 - E2e
 - Refactor and polish
+
+## Playground app
+- flutter_carousel_widget
+
